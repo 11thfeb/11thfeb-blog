@@ -6,6 +6,7 @@ const CONFIG = {
     role: "Fullstack Developer & Trader",
     bio: "Welcome to 11thfeb Blog",
     email: "anhbi11o2@gmail.com",
+    browser: "https://11thfeb.netlify.com/",
     linkedin: "huu-anh-vo-2154781b5",
     facebook: "11th.feb",
     instagram: "11th.feb",
@@ -14,7 +15,7 @@ const CONFIG = {
   projects: [
     {
       name: `11thfeb`,
-      href: "https://github.com/11thfeb",
+      href: "https://11thfeb.netlify.com/",
     },
   ],
   // blog setting (required)
