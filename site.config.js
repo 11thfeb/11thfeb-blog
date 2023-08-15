@@ -14,13 +14,13 @@ const CONFIG = {
   },
   projects: [
     {
-      name: `11thfeb`,
+      name: `➊➊🅣🅗🅕🅔🅑`,
       href: "https://11thfeb.netlify.com/",
     },
   ],
   // blog setting (required)
   blog: {
-    title: "11thfeb",
+    title: "➊➊🅣🅗🅕🅔🅑",
     description: "Welcome to 11thfeb Blog!",
   },
 
@@ -32,9 +32,9 @@ const CONFIG = {
 
   // notion configuration (required)
   notionConfig: {
-    pageId: "7f7fe2057c874a698c2dd580771f47b7",
+    // pageId: "7f7fe2057c874a698c2dd580771f47b7",
+    pageId: "f71df9e666d243388e140dee7e160e6a"
   },
-
   // plugin configuration (optional)
   googleAnalytics: {
     enable: false,
