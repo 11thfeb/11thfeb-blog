@@ -1,10 +1,10 @@
 const CONFIG = {
   // profile setting (required)
   profile: {
-    name: "11thfeb",
-    image: "/avatar-11thfeb.png", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
+    name: "1⃝1⃝🅃🄷 ®",
+    image: "/avatar11thfeb.png", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
     role: "Fullstack Developer & Trader",
-    bio: "Welcome to 11thfeb Blog",
+    bio: "Welcome to 1⃝1⃝🅃🄷 ® Blog",
     email: "anhbi11o2@gmail.com",
     browser: "https://11thfeb.netlify.com/",
     linkedin: "huu-anh-vo-2154781b5",
@@ -14,14 +14,14 @@ const CONFIG = {
   },
   projects: [
     {
-      name: `➊➊🅣🅗🅕🅔🅑`,
+      name: `1⃝1⃝🅃🄷 ®`,
       href: "https://11thfeb.netlify.com/",
     },
   ],
   // blog setting (required)
   blog: {
-    title: "➊➊🅣🅗🅕🅔🅑",
-    description: "Welcome to 11thfeb Blog!",
+    title: "1⃝1⃝🅃🄷 ®",
+    description: "Welcome to 1⃝1⃝🅃🄷 ® Blog!",
   },
 
   // CONFIG configration (required)
@@ -51,7 +51,7 @@ const CONFIG = {
   utterances: {
     enable: false,
     config: {
-      repo: "morethanmin/morethan-log",
+      repo: "11thfeb/PostgreSQL",
       "issue-term": "og:title",
       label: "💬 Utterances",
     },
