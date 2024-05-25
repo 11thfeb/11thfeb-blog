@@ -2,20 +2,20 @@ const CONFIG = {
   // profile setting (required)
   profile: {
     name: "1⃝1⃝🅃🄷 ®",
-    image: "/avatar11thfeb.png", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
-    role: "Software Engineer & Trader",
+    image: "/avatar11thfeb.png",
+    role: "Site Reliability Engineer",
     bio: "Welcome to 1⃝1⃝🅃🄷 ® Blog",
     email: "anhbi11o2@gmail.com",
-    browser: "https://11thfeb.netlify.com/",
+    browser: "https://11thfeb.netlify.app/",
     linkedin: "huu-anh-vo-2154781b5",
     facebook: "11th.feb",
     instagram: "11th.feb",
-    github: "11thfeb"
+    github: "11thfeb",
   },
   projects: [
     {
       name: `1⃝1⃝🅃🄷 ®`,
-      href: "https://11thfeb.netlify.com/",
+      href: "https://11thfeb.netlify.app/",
     },
   ],
   // blog setting (required)
@@ -26,14 +26,14 @@ const CONFIG = {
 
   // CONFIG configration (required)
   link: "https://anna-phan.netlify.app/",
-  since: 2022, // If leave this empty, current year will be used.
-  lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
+  since: 2022,
+  lang: ["en-US", "vn-VN"], // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   ogImageGenerateURL: "https://og-image-korean.vercel.app", // The link to generate OG image, don't end with a slash
 
   // notion configuration (required)
   notionConfig: {
     // pageId: "7f7fe2057c874a698c2dd580771f47b7",
-    pageId: "f71df9e666d243388e140dee7e160e6a"
+    pageId: "f71df9e666d243388e140dee7e160e6a",
   },
   // plugin configuration (optional)
   googleAnalytics: {
