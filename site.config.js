@@ -27,7 +27,7 @@ const CONFIG = {
   // CONFIG configration (required)
   link: "https://anna-phan.netlify.app/",
   since: 2022,
-  lang: ["en-US", "vn-VN"], // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
+  lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   ogImageGenerateURL: "https://og-image-korean.vercel.app", // The link to generate OG image, don't end with a slash
 
   // notion configuration (required)
