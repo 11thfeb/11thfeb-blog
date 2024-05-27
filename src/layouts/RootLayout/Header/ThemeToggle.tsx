@@ -65,4 +65,5 @@ export default ThemeToggle
 
 const StyledWrapper = styled.div`
   cursor: pointer;
+  margin-top: 3px;
 `
