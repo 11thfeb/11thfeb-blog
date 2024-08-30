@@ -5,7 +5,7 @@ const CONFIG = {
     image: "/avatar11thfeb.png",
     role: "Site Reliability Engineer",
     bio: "Welcome to 1⃝1⃝🅃🄷 ® Blog",
-    email: "anhbi11o2@gmail.com",
+    telegram: "x11thfeb",
     browser: "https://11thfeb.netlify.app/",
     linkedin: "huu-anh-vo-2154781b5",
     facebook: "11th.feb",

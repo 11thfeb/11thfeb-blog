@@ -2,10 +2,10 @@ import { CONFIG } from "site.config"
 import React from "react"
 import {
   AiOutlineInstagram,
-  AiOutlineMail,
   AiFillLinkedin,
   AiFillFacebook
 } from "react-icons/ai"
+import { FaTelegram } from "react-icons/fa";
 import styled from "@emotion/styled"
 
 const ContactCard: React.FC = () => {
@@ -33,15 +33,15 @@ const ContactCard: React.FC = () => {
             <div className="name">instagram</div>
           </a>
         )}
-        {CONFIG.profile.email && (
+        {CONFIG.profile.telegram && (
           <a
-            href={`mailto:${CONFIG.profile.email}`}
+            href={`https://t.me/${CONFIG.profile.telegram}`}
             rel="noreferrer"
             target="_blank"
             css={{ overflow: "hidden" }}
           >
-            <AiOutlineMail className="icon" />
-            <div className="name">email</div>
+            <FaTelegram className="icon" />
+            <div className="name">telegram</div>
           </a>
         )}
         {CONFIG.profile.linkedin && (
