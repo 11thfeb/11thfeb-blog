@@ -3,22 +3,19 @@ import mermaid from "mermaid"
 
 const useMermaidEffect = () => {
   useEffect(() => {
-    mermaid.initialize({
-      startOnLoad: true,
-    })
-    if (!document) return
-    const elements: HTMLCollectionOf<Element> =
-      document.getElementsByClassName("language-mermaid")
-    if (!elements) return
+    const elements = document.getElementsByClassName("language-mermaid")
 
     for (let i = 0; i < elements.length; i++) {
+      const container = document.createElement('div')
+      container.id = "mermaid" + i
+
       mermaid.render(
-        "mermaid" + i,
+        container.id,
         elements[i].textContent || "",
-        (svgCode: string) => {
-          elements[i].innerHTML = svgCode
-        }
-      )
+        container
+      ).then(({ svg }) => {
+        elements[i].innerHTML = svg
+      })
     }
   }, [])
 
