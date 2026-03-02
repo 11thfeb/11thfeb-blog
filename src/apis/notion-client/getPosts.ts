@@ -25,17 +25,21 @@ export const getPosts = async () => {
     const block = response.block
     const schema = collection?.schema
 
-    const rawMetadata = block[id].value
+    const rawMetadata = (block[id] as any)?.value?.value || (block[id] as any)?.value
+
+    console.log('[getPosts] rawMetadata type:', rawMetadata?.type)
 
     // Check Type
     if (
       rawMetadata?.type !== "collection_view_page" &&
       rawMetadata?.type !== "collection_view"
     ) {
+      console.log('[getPosts] Invalid type, returning empty array')
       return []
     } else {
       // Construct Data
       const pageIds = getAllPageIds(response)
+      console.log('[getPosts] Found pageIds:', pageIds.length)
       const data = []
       for (let i = 0; i < pageIds.length; i++) {
         const id = pageIds[i]
