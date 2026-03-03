@@ -9,19 +9,28 @@ async function getPageProperties(
   schema: CollectionPropertySchemaMap
 ) {
   const api = new NotionAPI()
-  const rawProperties = Object.entries(block?.[id]?.value?.properties || [])
+  const blockValue = (block?.[id] as any)?.value?.value || (block?.[id] as any)?.value
+  const rawProperties = Object.entries(blockValue?.properties || [])
+  console.log('[getPageProperties] id:', id)
+  console.log('[getPageProperties] rawProperties keys:', Object.keys(blockValue?.properties || {}))
+  console.log('[getPageProperties] schema keys:', Object.keys(schema || {}))
   const excludeProperties = ["date", "select", "multi_select", "person", "file"]
-  const properties: any = {}
+  const properties: any = { id }
   for (let i = 0; i < rawProperties.length; i++) {
     const [key, val]: any = rawProperties[i]
-    properties.id = id
+    if (!schema || !schema[key]) {
+      console.log('[getPageProperties] Skipping key:', key, '- not in schema')
+      continue
+    }
+    console.log('[getPageProperties] Processing key:', key, 'name:', schema[key].name, 'type:', schema[key].type)
     if (schema[key]?.type && !excludeProperties.includes(schema[key].type)) {
       properties[schema[key].name] = getTextContent(val)
+      console.log('[getPageProperties] Set text:', schema[key].name, '=', properties[schema[key].name])
     } else {
       switch (schema[key]?.type) {
         case "file": {
           try {
-            const Block = block?.[id].value
+            const Block = blockValue
             const url: string = val[0][1][0][1]
             const newurl = customMapImageUrl(url, Block)
             properties[schema[key].name] = newurl
@@ -34,6 +43,7 @@ async function getPageProperties(
           const dateProperty: any = getDateValue(val)
           delete dateProperty.type
           properties[schema[key].name] = dateProperty
+          console.log('[getPageProperties] Set date:', schema[key].name, '=', dateProperty)
           break
         }
         case "select": {
@@ -41,6 +51,7 @@ async function getPageProperties(
           if (selects[0]?.length) {
             properties[schema[key].name] = selects.split(",")
           }
+          console.log('[getPageProperties] Set select:', schema[key].name, '=', properties[schema[key].name])
           break
         }
         case "multi_select": {
@@ -48,6 +59,7 @@ async function getPageProperties(
           if (selects[0]?.length) {
             properties[schema[key].name] = selects.split(",")
           }
+          console.log('[getPageProperties] Set multi_select:', schema[key].name, '=', properties[schema[key].name])
           break
         }
         case "person": {

@@ -21,9 +21,13 @@ export const getPosts = async () => {
     const response = await api.getPage(id)
     console.log('[getPosts] Got response, processing...')
     id = idToUuid(id)
-    const collection = Object.values(response.collection)[0]?.value
+    const collectionData = Object.values(response.collection)[0] as any
+    console.log('[getPosts] collectionData structure:', Object.keys(collectionData || {}))
+    const collection = collectionData?.value?.value || collectionData?.value
+    console.log('[getPosts] collection keys:', Object.keys(collection || {}))
     const block = response.block
     const schema = collection?.schema
+    console.log('[getPosts] schema exists:', !!schema, 'keys:', Object.keys(schema || {}).length)
 
     const rawMetadata = (block[id] as any)?.value?.value || (block[id] as any)?.value
 
@@ -44,12 +48,17 @@ export const getPosts = async () => {
       for (let i = 0; i < pageIds.length; i++) {
         const id = pageIds[i]
         const properties = (await getPageProperties(id, block, schema)) || null
+        if (i === 0) {
+          console.log('[getPosts] First post properties:', JSON.stringify(properties, null, 2))
+        }
         // Add fullwidth, createdtime to properties
-        properties.createdTime = new Date(
-          block[id].value?.created_time
-        ).toString()
+        const blockValue = (block[id] as any)?.value?.value || (block[id] as any)?.value
+        const createdTimeRaw = blockValue?.created_time
+        properties.createdTime = createdTimeRaw
+          ? new Date(createdTimeRaw).toString()
+          : new Date().toString()
         properties.fullWidth =
-          (block[id].value?.format as any)?.page_full_width ?? false
+          (blockValue?.format as any)?.page_full_width ?? false
 
         data.push(properties)
       }
@@ -63,6 +72,9 @@ export const getPosts = async () => {
 
       const posts = data as TPosts
       console.log('[getPosts] Success! Found', posts.length, 'posts')
+      if (posts.length > 0) {
+        console.log('[getPosts] Sample post:', JSON.stringify(posts[0], null, 2))
+      }
       return posts
     }
   } catch (error) {
