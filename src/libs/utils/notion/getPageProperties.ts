@@ -69,13 +69,15 @@ async function getPageProperties(
               } else {
                 const res: any = await api.getUsers(userId, gotOptions)
                 const resValue =
-                  res?.recordMapWithRoles?.notion_user?.[userId[1]]?.value
+                  res?.recordMapWithRoles?.notion_user?.[cacheKey]?.value?.value ||
+                  res?.recordMapWithRoles?.notion_user?.[cacheKey]?.value
                 const user = {
                   id: resValue?.id ?? null,
                   name:
                     resValue?.name ||
-                    `${resValue?.family_name}${resValue?.given_name}` ||
-                    null,
+                    (resValue?.family_name || resValue?.given_name
+                      ? `${resValue?.family_name || ""}${resValue?.given_name || ""}`.trim()
+                      : null),
                   profile_photo: resValue?.profile_photo || null,
                 }
                 userCache.set(cacheKey, user)

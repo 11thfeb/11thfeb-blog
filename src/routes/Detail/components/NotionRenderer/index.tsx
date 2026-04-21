@@ -23,13 +23,14 @@ const _NotionRenderer = dynamic(
 
 const Code = dynamic(() =>
   import("react-notion-x/build/third-party/code").then(async (m) => {
+    // Load languages with dependencies first
+    await import("prismjs/components/prism-markup.js")
+    await import("prismjs/components/prism-markup-templating.js")
+    await import("prismjs/components/prism-c.js")
+    await import("prismjs/components/prism-cpp.js")
+    await import("prismjs/components/prism-csharp.js")
     await Promise.all([
-      import("prismjs/components/prism-markup-templating.js"),
-      import("prismjs/components/prism-markup.js"),
       import("prismjs/components/prism-bash.js"),
-      import("prismjs/components/prism-c.js"),
-      import("prismjs/components/prism-cpp.js"),
-      import("prismjs/components/prism-csharp.js"),
       import("prismjs/components/prism-docker.js"),
       import("prismjs/components/prism-java.js"),
       import("prismjs/components/prism-js-templates.js"),
@@ -82,7 +83,7 @@ const Modal = dynamic(
 )
 
 const mapPageUrl = (id: string) => {
-  return "https://www.notion.so/" + id.replace(/-/g, "")
+  return "https://www.notion.so/" + (id || "").replace(/-/g, "")
 }
 
 type Props = {
